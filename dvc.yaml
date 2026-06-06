@@ -1,0 +1,73 @@
+stages:
+  preprocess:
+    cmd: python scripts/run_pipeline.py --stage preprocess
+    deps:
+      - src/data/acn_loader.py
+      - src/data/urbanev_loader.py
+      - src/data/preprocessor.py
+      - config/config.yaml
+    outs:
+      - data/processed/acn_processed.parquet
+      - data/processed/urbanev_processed.parquet
+      - data/processed/features.parquet
+
+  train_demand:
+    cmd: python scripts/train_demand.py
+    deps:
+      - src/agents/demand_agent.py
+      - src/models/tree_models.py
+      - data/processed/features.parquet
+      - config/config.yaml
+    outs:
+      - data/models/demand_best.pkl
+    metrics:
+      - data/models/demand_metrics.json:
+          cache: false
+
+  train_congestion:
+    cmd: python scripts/train_congestion.py
+    deps:
+      - src/agents/congestion_agent.py
+      - src/models/tree_models.py
+      - data/processed/features.parquet
+      - config/config.yaml
+    outs:
+      - data/models/congestion_best.pkl
+    metrics:
+      - data/models/congestion_metrics.json:
+          cache: false
+
+  train_gnn:
+    cmd: python scripts/train_gnn.py
+    deps:
+      - src/agents/gnn_agent.py
+      - src/models/gnn_model.py
+      - data/processed/features.parquet
+      - config/config.yaml
+    outs:
+      - data/models/gnn_model.pt
+    metrics:
+      - data/models/gnn_metrics.json:
+          cache: false
+
+  train_tariff:
+    cmd: python scripts/train_tariff.py
+    deps:
+      - src/agents/tariff_agent.py
+      - src/models/ppo_model.py
+      - data/models/demand_best.pkl
+      - config/config.yaml
+    outs:
+      - data/models/ppo_tariff.zip
+    metrics:
+      - data/models/tariff_metrics.json:
+          cache: false
+
+  simulate:
+    cmd: python scripts/run_simulation.py
+    deps:
+      - src/agents/revenue_simulator.py
+      - data/models/ppo_tariff.zip
+      - config/config.yaml
+    outs:
+      - data/models/simulation_results.json
