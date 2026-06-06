@@ -1,3 +1,8 @@
+<!--
+Name: Vivek Kumar
+Enroll: 23125038
+Email: vivek_k@mfs.iitr.ac.in
+-->
 # Agentic AI-Based Dynamic Tariff Optimization for EV Charging Networks
 
 [![CI/CD](https://github.com/ev-charging-tariff-optimization/actions/workflows/ci.yml/badge.svg)](https://github.com/ev-charging-tariff-optimization/actions)

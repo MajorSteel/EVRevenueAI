@@ -1,3 +1,8 @@
+<!--
+Name: Vivek Kumar
+Enroll: 23125038
+Email: vivek_k@mfs.iitr.ac.in
+-->
 # Presentation Deck — EV Charging Dynamic Tariff Optimization
 
 > 5-7 slides (excluding cover, executive summary, and appendix)

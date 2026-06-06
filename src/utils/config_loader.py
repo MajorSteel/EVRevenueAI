@@ -1,3 +1,8 @@
+# ==============================================================================
+# Name: Vivek Kumar
+# Enroll: 23125038
+# Email: vivek_k@mfs.iitr.ac.in
+# ==============================================================================
 """
 YAML configuration loader with singleton pattern and dot-notation access.
 

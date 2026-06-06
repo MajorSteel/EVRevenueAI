@@ -1,3 +1,8 @@
+# ==============================================================================
+# Name: Vivek Kumar
+# Enroll: 23125038
+# Email: vivek_k@mfs.iitr.ac.in
+# ==============================================================================
 # Multi-stage Dockerfile for EV Charging Tariff Optimization
 # Stage 1: Build
 FROM python:3.10-slim AS builder

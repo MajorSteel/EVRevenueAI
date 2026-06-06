@@ -1,3 +1,8 @@
+# ==============================================================================
+# Name: Vivek Kumar
+# Enroll: 23125038
+# Email: vivek_k@mfs.iitr.ac.in
+# ==============================================================================
 """
 Evaluation metrics for the EV Charging Tariff Optimization project.
 

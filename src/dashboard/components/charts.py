@@ -1,3 +1,8 @@
+# ==============================================================================
+# Name: Vivek Kumar
+# Enroll: 23125038
+# Email: vivek_k@mfs.iitr.ac.in
+# ==============================================================================
 """Chart helper components for the dashboard."""
 import plotly.graph_objects as go
 import plotly.express as px

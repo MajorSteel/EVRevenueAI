@@ -1,3 +1,8 @@
+# ==============================================================================
+# Name: Vivek Kumar
+# Enroll: 23125038
+# Email: vivek_k@mfs.iitr.ac.in
+# ==============================================================================
 """Map view component for spatial visualizations."""
 import plotly.express as px
 import pandas as pd

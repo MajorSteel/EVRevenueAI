@@ -1,3 +1,8 @@
+# ==============================================================================
+# Name: Vivek Kumar
+# Enroll: 23125038
+# Email: vivek_k@mfs.iitr.ac.in
+# ==============================================================================
 """Feature engineering layer for EV charging tariff optimization.
 
 This package exposes all feature-engine classes so users can import them

@@ -1,3 +1,8 @@
+# ==============================================================================
+# Name: Vivek Kumar
+# Enroll: 23125038
+# Email: vivek_k@mfs.iitr.ac.in
+# ==============================================================================
 """Spatial feature engineering for EV charging tariff optimization.
 
 This module provides the :class:`SpatialFeatureEngine` which derives

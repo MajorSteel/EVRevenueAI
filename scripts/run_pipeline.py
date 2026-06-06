@@ -1,3 +1,8 @@
+# ==============================================================================
+# Name: Vivek Kumar
+# Enroll: 23125038
+# Email: vivek_k@mfs.iitr.ac.in
+# ==============================================================================
 """
 End-to-end pipeline orchestrator for EV Charging Tariff Optimization.
 Runs all phases sequentially: data ingestion → feature engineering → training → simulation → monitoring.
