@@ -1,0 +1,65 @@
+# ==============================================================================
+# Name: Vivek Kumar
+# Enroll: 23125038
+# Email: vivek_k@mfs.iitr.ac.in
+# ==============================================================================
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ev-tariff-optimizer
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./config:/app/config
+    environment:
+      - PYTHONPATH=/app
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+    depends_on:
+      - mlflow
+    networks:
+      - ev-network
+
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ev-tariff-dashboard
+    command: streamlit run src/dashboard/app.py --server.port 8501 --server.address 0.0.0.0
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./data:/app/data
+      - ./config:/app/config
+    environment:
+      - PYTHONPATH=/app
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+    depends_on:
+      - app
+    networks:
+      - ev-network
+
+  mlflow:
+    image: python:3.10-slim
+    container_name: ev-tariff-mlflow
+    command: >
+      bash -c "pip install mlflow>=2.8.0 && 
+               mlflow server --host 0.0.0.0 --port 5000 
+               --backend-store-uri sqlite:///mlflow.db 
+               --default-artifact-root /mlflow/artifacts"
+    ports:
+      - "5000:5000"
+    volumes:
+      - mlflow-data:/mlflow
+    networks:
+      - ev-network
+
+volumes:
+  mlflow-data:
+
+networks:
+  ev-network:
+    driver: bridge
